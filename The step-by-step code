@@ -1,0 +1,28 @@
+--We are running an experiment at an item-level, which means all users who visit will see the same page, but the layout of different item pages may differ.
+-- The initial table that we have does not contain a column with the date-type variable so it is not possible to define metrics based on the date, for example,number of views in 30 days.
+--Therefore the data needs to be cleaned initially before further analysis can be done.
+
+SELECT 
+  item_id,
+  test_a AS test_assignment,
+  (CASE WHEN test_a is NOT NULL then 'item_test_1' ELSE NULL END) AS test_number,
+  (CASE WHEN test_a is NOT NULL then '2013-01-05 00:00:00' ELSE NULL END) AS date
+FROM 
+  dsv1069.final_assignments_qa
+UNION
+SELECT 
+  item_id,
+  test_b AS test_assignment,
+  (CASE WHEN test_b is NOT NULL then 'item_test_2' ELSE NULL END) AS test_number,
+  (CASE WHEN test_b is NOT NULL then '2013-01-05 00:00:00' ELSE NULL END) AS date
+FROM 
+  dsv1069.final_assignments_qa
+UNION
+SELECT 
+  item_id,
+  test_c AS test_assignment,
+  (CASE WHEN test_c is NOT NULL then 'item_test_3' ELSE NULL END) AS test_number,
+  (CASE WHEN test_c is NOT NULL then '2013-01-05 00:00:00' ELSE NULL END) AS date
+FROM 
+  dsv1069.final_assignments_qa
+ORDER BY test_number
