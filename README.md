@@ -4,3 +4,5 @@ Part of the Peer Graded Assignment on the Data Wrangling, Analysis and AB Testin
 A/B testing is a widely used research methodology where the same users are shown different variants of the same page, and using statistical tools to analyse which variant of the page proved to be more successful for the company. In this project, the layout of an e-commerce website is undergoing A/B testing.
 
 3 pairs of the website layout are considered and by using SQL, important metrics are identified and defined. Statistical testing is then done on these metrics to determine which variant of the page is successful.
+
+
