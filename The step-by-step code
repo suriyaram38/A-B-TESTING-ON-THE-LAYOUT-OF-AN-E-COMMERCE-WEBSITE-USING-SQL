@@ -26,3 +26,64 @@ SELECT
 FROM 
   dsv1069.final_assignments_qa
 ORDER BY test_number
+
+--Use this newly created table to compute order_binary for the 30 day window after the test_start_date for the test named item_test_2
+
+SELECT 
+test_assignment,
+COUNT(DISTINCT final_assignments.item_id) AS items,
+SUM(CASE WHEN (orders.created_at > final_assignments.test_start_date AND
+            DATE_PART('day', orders.created_at-final_assignments.test_start_date) <= 30)
+      THEN 1 ELSE 0 END) AS order_binary
+FROM dsv1069.final_assignments
+LEFT JOIN dsv1069.orders
+ON final_assignments.item_id=orders.item_id
+WHERE test_number='item_test_2'
+GROUP BY test_assignment
+
+--Use this newly created table to  compute view_binary for the 30 day window after the test_start_date for the test named item_test_2
+
+SELECT 
+final_assignments.item_id,
+test_assignment,
+MAX(CASE WHEN (view_item_events.event_time > final_assignments.test_start_date AND
+            DATE_PART('day', event_time-test_start_date) <= 30)
+      THEN 1 ELSE 0 END) AS view_binary,
+AVG(CASE WHEN (view_item_events.event_time > final_assignments.test_start_date AND
+            DATE_PART('day', event_time-test_start_date) <= 30)
+      THEN 1 ELSE 0 END) AS average_views
+FROM dsv1069.final_assignments
+LEFT JOIN dsv1069.view_item_events
+ON final_assignments.item_id=view_item_events.item_id
+WHERE test_number='item_test_2'
+GROUP BY test_assignment, final_assignments.item_id
+
+--Getting the aggregate view table ready for statistical testing
+
+SELECT 
+  test_assignment,
+  count(item) AS items,
+  SUM(view_binary_30d) AS view_binary_30d
+FROM 
+  (SELECT 
+    final_assignments.item_id AS item,
+    test_assignment,
+    test_number,
+    test_start_date,
+    MAX((CASE WHEN date(event_time) - date(test_start_date) BETWEEN 0 AND 30 THEN 1 ELSE 0 END)) AS view_binary_30d
+  FROM 
+    dsv1069.final_assignments
+  LEFT JOIN dsv1069.view_item_events
+  ON final_assignments.item_id = view_item_events.item_id
+  WHERE test_number = 'item_test_2'
+  GROUP BY
+    final_assignments.item_id,
+    test_assignment,
+    test_number,
+    test_start_date
+  ) AS view_binary
+GROUP BY
+  test_assignment,
+  test_number,
+  test_start_date
+
