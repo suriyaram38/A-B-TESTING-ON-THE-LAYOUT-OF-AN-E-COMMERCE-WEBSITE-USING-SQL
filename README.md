@@ -15,17 +15,21 @@ Six test cases of the page with 2 variants each along with the item ID are avail
 
 ## Step 2: Computing the number of orders for both variants in test case 2
 
-The next step here is to find out the number of items available and items ordered for each variant in test case 2. The numerical as well as graphical representation of the same is shown as below:
+The next step here is to find out the number of items available and items ordered for each variant in test case 2. This is done over a window of 30 days from the start of the testing. The numerical as well as graphical representation of the same is shown as below:
 
 ![image](https://user-images.githubusercontent.com/67182983/120367184-2dd86380-c32e-11eb-99ea-c84b24cb1931.png)
 
-It can be seen that variant 1 is more successful in converting orders than variant 0.
+It can be seen that variant 1 is slightly more successful in converting orders than variant 0.
 
 ![image](https://user-images.githubusercontent.com/67182983/120367269-4b0d3200-c32e-11eb-8953-780331b70944.png)
 
+## Step 3: Computing the viewed item metrics
 
+Over a window of 30 days, the number of items available as part of each variant, the number of views as well as the average number of times each item was viewed is acquired. 
 
+![image](https://user-images.githubusercontent.com/67182983/120369235-9cb6bc00-c330-11eb-9305-d61118c390d1.png)
 
+Here, it can again be seen that variant 1 is slightly more successful in getting more number of average views than variant 0.
 
 
 
