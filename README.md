@@ -13,6 +13,17 @@ Part of the Peer Graded Assignment on the Data Wrangling, Analysis and AB Testin
 
 Six test cases of the page with 2 variants each along with the item ID are available. The data is cleaned in such a way that 3 test cases are considered and the variants are labelled 0 and 1 accordingly. The date is also added to each record so as to compute the order views for a 30 day timeframe.
 
+## Step 2: Computing the number of orders for both variants in test case 2
+
+The next step here is to find out the number of items available and items ordered for each variant in test case 2. The numerical as well as graphical representation of the same is shown as below:
+
+![image](https://user-images.githubusercontent.com/67182983/120367184-2dd86380-c32e-11eb-99ea-c84b24cb1931.png)
+
+It can be seen that variant 1 is more successful in converting orders than variant 0.
+
+![image](https://user-images.githubusercontent.com/67182983/120367269-4b0d3200-c32e-11eb-8953-780331b70944.png)
+
+
 
 
 
