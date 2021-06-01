@@ -31,6 +31,21 @@ Over a window of 30 days, the number of items available as part of each variant,
 
 Here, it can again be seen that variant 1 is slightly more successful in getting more number of average views than variant 0.
 
+## Step 4: Compute lift and P value
 
+The lifts in metrics and the p-values for the binary metrics ( 30 day order binary and 30 day view binary) using a interval 95% confidence. It is done via the following link:
+ https://thumbtack.github.io/abba/demo/abba.html
+ 
+ For 30 day view binary:
+ 
+The success rate in Control : 82%
+The success rate in Treatment: 84%
+p-value is 0.25 and the improvement is 2.3%. Since the p-value is less, we can reject the null hypothesis and therefore the number of items viewed has increased as a result of changing the item design.
 
+For 30 day order binary:
 
+The success rate in Control : 36%
+The success rate in Treatment: 36%
+p-value is 0.85 and the improvement is 1.1%. Therefore there is not a very significant improvement in orders after changing the item design.
+
+To conclude, there is increase in the average views of items for variant 1 but there is not a significant improvement in the average number of orders made.
